@@ -1,0 +1,15 @@
+# directories
+
+
+# file types
+*.beam
+*.swp
+*.dump
+*.pyc
+
+# config files
+.hosts
+link.sh
+
+# OS X
+.DS_Store
