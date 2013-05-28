@@ -29,4 +29,4 @@ fmt = '%10s %10s %10s %10s'
 print fmt % ('A1 hex', 'A1', 'A2 hex', 'A2')
 print fmt % (('-' * 10,) * 4)
 for values in zip(to_hex(a1), a1, to_hex(a2), a2):
-    print fmt % values
+    print fmt % values90
