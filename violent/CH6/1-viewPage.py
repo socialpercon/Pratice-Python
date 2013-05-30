@@ -10,5 +10,5 @@ def viewPage(url):
     print source_code
 
 
-viewPage('http://www.syngress.com/')
+viewPage('http://www.naver.com/')
 
