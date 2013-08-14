@@ -1,42 +1,37 @@
 #!usr/bin/python
 # coding: utf-8
-
+import re
 import sys
 
-class FileHandler:
-    def __init__(self):
-        self.filedict = {}
-    
-    def setfile(self, filename, filedes):
-        if not self.filedict.has_key(filename):
-            self.filedict[filename] = filedes
 
-
-class Parser:
-    def __init__(self, filename):
-        wdict = {}
-        try:
-            f = open(filename, 'r')
-        except IOError, e:
-            print "error: %s" %e
-        
-    def parer(
 
 if __name__ == "__main__":
     filename = sys.argv[1]
-    
+    wdict = {}
+    filedict = {}
+    reg = re.compile('[a-zA-Z][a-zA-Z]*[a-zA-Z]')
+    frontback = re.compile('([a-zA-Z])[a-zA-Z]*([a-zA-Z])')
+    try:
+        f = open(filename, 'r')
+    except IOError, e:
+        print "error: %s" %e
     try:    
         wdict = {}
-        for s in f.readlines():
-            b = s.split(' ')
-            for word in b:
-                w = word.strip()
-                try:
-                    wdict[w] = wdict[w] +1
-                except KeyError:
-                    wdict[w] = 1
-        for k in wdict:
-            print k, wdict[k]
-
+        while True:
+            chunk = f.readline()
+            if chunk:
+                word = re.findall('[a-zA-Z][a-zA-Z]*[a-zA-Z]',chunk) 
+                for i in word:
+                    match = re.search('([a-zA-Z])[a-zA-Z]*([a-zA-Z])', i).group()
+                    front = match[0]
+                    back = match[1]
+                    filename = "%s%s.txt" % (front, back)
+                    if not filedict.has_key(filename):
+                        filedict[filename] = open("file/%s.txt" %i, 'w')
+                        filedict[filename].write("%s\n" % i)
+                    else:
+                        filedict[filename].write("%s\n" % i)
+            else:
+                break
     finally:
         f.close()
