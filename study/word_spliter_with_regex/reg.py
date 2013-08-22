@@ -3,7 +3,9 @@
 import re
 import sys
 import os
+import yappi
 
+yappi.start()
 def split_word_file(filename):
     filedict = {}
     reg = re.compile('[a-zA-Z][a-zA-Z]*[a-zA-Z]')
@@ -36,10 +38,15 @@ def split_word_file(filename):
 
     finally:
         f.close()
+yappi.stop()
 
 
 if __name__ == "__main__":
+    yappi.start()
     if len(sys.argv) >= 2:
         split_word_file(sys.argv[1])
     else:
         print "failed : wrong argument"
+    yappi.stop()
+    f = open('./profile.txt', 'w')
+    f.write('\n'.join(yappi.get_stats()))
