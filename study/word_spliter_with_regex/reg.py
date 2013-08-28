@@ -16,22 +16,18 @@ def split_word_file(filename):
     except (IOError, OSError), e:
         print "error: %s" %e
     try:    
-        while True:
-            chunk = f.readline()
-            if chunk:
-                words = reg.findall(chunk) 
-                for word in words:
-                    match = frontback.match(word).group(1,2)
-                    front = match[0]
-                    back = match[1]
-                    filename = "%s%s.txt" % (front, back)
-                    if not filedict.has_key(filename):
-                        filedict[filename] = open("file/%s" % filename, 'w')
-                        filedict[filename].write("%s\n" % word)
-                    else:
-                        filedict[filename].write("%s\n" % word)
-            else:
-                break
+        for chunk in f:
+            words = reg.findall(chunk) 
+            for word in words:
+                match = frontback.match(word).group(1,2)
+                front = match[0]
+                back = match[1]
+                filename = "%s%s.txt" % (front, back)
+                if not filedict.has_key(filename):
+                    filedict[filename] = open("file/%s" % filename, 'w')
+                    filedict[filename].write("%s\n" % word)
+                else:
+                    filedict[filename].write("%s\n" % word)
         for k in filedict:
             filedict[k].close()
 
