@@ -11,7 +11,7 @@ def findTgt(tgtName):
             print '[+] Time is: '+str(datetime.now())
 
 
-tgtName = 'TJ iPhone'
+tgtName = 'Belkin F97'
 while True:
     print '[-] Scanning for Bluetooth Device: ' + tgtName
     findTgt(tgtName)

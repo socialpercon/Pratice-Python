@@ -16,5 +16,5 @@ def google(search_term):
     print objects
 
 
-google('Boondock Saint')
+google('강남 클럽')
 

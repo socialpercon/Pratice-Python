@@ -24,5 +24,4 @@ ip, port = server.address # find out what port we were given
 
 message_data = open('lorem.txt', 'r').read()
 client = EchoClient(ip, port, message=message_data)
-
 asyncore.loop()
