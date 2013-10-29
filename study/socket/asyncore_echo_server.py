@@ -6,31 +6,31 @@
 """
 """
 
-__version__ = "$Id$"
-#end_pymotw_header
-
 import asyncore
-import logging
-
+import socket
 class EchoServer(asyncore.dispatcher):
     """Receives connections and establishes handlers for each client.
     """
     
-    def __init__(self, address):
-        self.logger = logging.getLogger('EchoServer')
+    def __init__(self, host, port):
+        print 'EchoServer'
         asyncore.dispatcher.__init__(self)
         self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.bind(address)
+
+        self.bind((host, port))
         self.address = self.socket.getsockname()
-        self.logger.debug('binding to %s', self.address)
+        print "binding to %s" % (str(self.address))
         self.listen(1)
         return
 
     def handle_accept(self):
         # Called when a client connects to the socket
+
         client_info = self.accept()
-        self.logger.debug('handle_accept() -> %s', client_info[1])
-        EchoHandler(sock=client_info[0])
+        if client_info is not None:
+            sock, addr = client_info
+            print 'handle_accept() -> %s' % str(addr)
+            EchoHandler(sock=sock)
         # Only deal with one client at a time,
         # so close as soon as the handler is set up.
         # Under normal conditions, the server
@@ -50,8 +50,7 @@ class EchoHandler(asyncore.dispatcher):
     
     def __init__(self, sock, chunk_size=256):
         self.chunk_size = chunk_size
-        logger_name = 'EchoHandler'
-        self.logger = logging.getLogger(logger_name)
+        print 'init EchoHandler'
         asyncore.dispatcher.__init__(self, sock=sock)
         self.data_to_write = []
         return
@@ -59,7 +58,7 @@ class EchoHandler(asyncore.dispatcher):
     def writable(self):
         """Write if data has been received."""
         response = bool(self.data_to_write)
-        self.logger.debug('writable() -> %s', response)
+        #print 'writable() -> %s' % response
         return response
     
     def handle_write(self):
@@ -71,8 +70,7 @@ class EchoHandler(asyncore.dispatcher):
         if sent < len(data):
             remaining = data[sent:]
             self.data.to_write.append(remaining)
-        self.logger.debug('handle_write() -> (%d) %r',
-                          sent, data[:sent])
+        #print 'handle_write() -> (%d) %r' % (sent, data[:sent])
         if not self.writable():
             self.handle_close()
 
@@ -81,23 +79,18 @@ class EchoHandler(asyncore.dispatcher):
         and put it into the outgoing queue.
         """
         data = self.recv(self.chunk_size)
-        self.logger.debug('handle_read() -> (%d) %r',
-                          len(data), data)
+        #print 'handle_read() -> (%d) %r' % (len(data), data)
         self.data_to_write.insert(0, data)
     
     def handle_close(self):
-        self.logger.debug('handle_close()')
+        print('handle_close()')
         self.close()
 
         
 
 if __name__ == '__main__':
-    import socket
-
-    logging.basicConfig(level=logging.DEBUG,
-                        format='%(name)-11s: %(message)s',
-                        )
-
-    address = ('localhost', 9090) # let the kernel assign a port
-    server = EchoServer(address)
+    import pdb
+    pdb.set_trace()
+    #address = ('localhost', 9090) # let the kernel assign a port
+    server = EchoServer('localhost', 9090)
     asyncore.loop()
