@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import smtplib
 from email.mime.text import MIMEText
+
+from network_programming import smtplib
 
 
 def sendMail(user,pwd,to,subject,text):

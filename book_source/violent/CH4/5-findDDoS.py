@@ -1,8 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import dpkt
+
 import optparse
-import socket
+from network_programming import socket
+
 THRESH = 1000
 
 

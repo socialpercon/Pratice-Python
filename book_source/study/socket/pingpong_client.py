@@ -1,6 +1,7 @@
 #!/usr/bin/env python
-import socket
 import time
+from network_programming import socket
+
 
 def main():
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

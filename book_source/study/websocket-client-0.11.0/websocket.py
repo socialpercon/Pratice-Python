@@ -19,16 +19,15 @@ Copyright (C) 2010 Hiroki Ohtani(liris)
 
 """
 
-
-import socket
-from urlparse import urlparse
-import os
 import array
+import base64
+import hashlib
+import logging
+import os
 import struct
 import uuid
-import hashlib
-import base64
-import logging
+from network_programming import socket
+from urlparse import urlparse
 
 """
 websocket python client.

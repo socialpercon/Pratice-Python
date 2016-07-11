@@ -1,11 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import smtplib
-import optparse
-
 from email.mime.text import MIMEText
-from twitterClass import *
+
+import optparse
+from network_programming import smtplib
 from random import choice
+from twitterClass import *
+
 
 def sendMail(user,pwd,to,subject,text):
 

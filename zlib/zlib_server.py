@@ -8,10 +8,11 @@
 
 #__version__ = "$Id$"
 #end_pymotw_header
-import zlib
-import logging
-import SocketServer
 import binascii
+
+import logging
+import network_programming.SocketServer
+import zlib
 
 BLOCK_SIZE = 64
 
@@ -53,7 +54,7 @@ class ZlibRequestHandler(SocketServer.BaseRequestHandler):
 
 
 if __name__ == '__main__':
-    import socket
+    from network_programming import socket, SocketServer
     import threading
     from cStringIO import StringIO
 

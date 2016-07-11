@@ -7,8 +7,8 @@
 """
 #end_pymotw_header
 
-import socket
 import urlparse
+from network_programming import socket
 
 for port in [ 80, 443, 21, 70, 25, 143, 993, 110, 995 ]:
     print urlparse.urlunparse(

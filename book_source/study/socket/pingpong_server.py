@@ -1,6 +1,7 @@
 #!/usr/bin/env python
-import socket
 import time
+from network_programming import socket
+
 
 def ping(csock_fd):
     csock_fd.write("0\n")

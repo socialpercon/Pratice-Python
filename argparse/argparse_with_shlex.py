@@ -8,8 +8,8 @@
 #end_pymotw_header
 
 import argparse
-from ConfigParser import ConfigParser
 import shlex
+from network_programming.ConfigParser import ConfigParser
 
 parser = argparse.ArgumentParser(description='Short sample app')
 

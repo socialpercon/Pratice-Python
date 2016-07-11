@@ -7,7 +7,7 @@
 """
 #end_pymotw_header
 
-import socket
+from network_programming import socket
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

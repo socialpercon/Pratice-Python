@@ -8,10 +8,11 @@
 
 #__version__ = "$Id$"
 #end_pymotw_header
+import binascii
+
 import bz2
 import logging
-import SocketServer
-import binascii
+import network_programming.SocketServer
 
 BLOCK_SIZE = 32
 
@@ -53,7 +54,7 @@ class Bz2RequestHandler(SocketServer.BaseRequestHandler):
 
 
 if __name__ == '__main__':
-    import socket
+    from network_programming import socket, SocketServer
     import sys
     from cStringIO import StringIO
     import threading

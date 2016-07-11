@@ -6,8 +6,10 @@
 """
 """
 
-import asyncore
-import socket
+import network_programming.asyncore
+from network_programming import socket, asyncore
+
+
 class EchoServer(asyncore.dispatcher):
     """Receives connections and establishes handlers for each client.
     """

@@ -7,10 +7,10 @@
 """
 #end_pymotw_header
 
-import asyncore
-import socket
-
+import network_programming.asyncore
 from asynchat_echo_handler import EchoHandler
+from network_programming import socket, asyncore
+
 
 class EchoServer(asyncore.dispatcher):
     """Receives connections and establishes handlers for each client.

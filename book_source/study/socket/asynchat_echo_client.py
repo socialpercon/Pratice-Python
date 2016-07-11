@@ -8,7 +8,8 @@
 #end_pymotw_header
 
 import asynchat
-import socket
+
+from network_programming import socket, asyncore
 
 
 class EchoClient(asynchat.async_chat):
@@ -71,7 +72,7 @@ class EchoProducer(asynchat.simple_producer):
 
 
 if __name__ == "__main__":
-    import asyncore
+    import network_programming.asyncore
     client = EchoClient('localhost', 9777, message="test1")
     client = EchoClient('localhost', 9777, message="test2")
     client = EchoClient('localhost', 9777, message="test3")

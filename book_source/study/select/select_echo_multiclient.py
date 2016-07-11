@@ -7,8 +7,8 @@
 """
 #end_pymotw_header
 
-import socket
 import sys
+from network_programming import socket
 
 messages = [ 'This is the message. ',
              'It will be sent ',
@@ -17,9 +17,9 @@ messages = [ 'This is the message. ',
 server_address = ('localhost', 10000)
 
 # Create a TCP/IP socket
-socks = [ socket.socket(socket.AF_INET, socket.SOCK_STREAM),
-          socket.socket(socket.AF_INET, socket.SOCK_STREAM),
-          ]
+socks = [socket.socket(socket.AF_INET, socket.SOCK_STREAM),
+         socket.socket(socket.AF_INET, socket.SOCK_STREAM),
+         ]
 
 # Connect the socket to the port where the server is listening
 print >>sys.stderr, 'connecting to %s port %s' % server_address

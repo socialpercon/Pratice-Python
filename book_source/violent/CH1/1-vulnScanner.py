@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import socket
 import os
 import sys
+from network_programming import socket
 
 
 def retBanner(ip, port):

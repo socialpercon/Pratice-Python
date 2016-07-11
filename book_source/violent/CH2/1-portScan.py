@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import optparse
-from socket import *
+from network_programming.socket import *
 from threading import *
 
 screenLock = Semaphore(value=1)

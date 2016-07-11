@@ -10,8 +10,9 @@ __version__ = "$Id$"
 #end_pymotw_header
 
 import imaplib
-import ConfigParser
 import os
+from network_programming import ConfigParser
+
 
 def open_connection(verbose=False):
     # Read the config file

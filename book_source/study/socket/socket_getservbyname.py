@@ -7,7 +7,7 @@
 """
 #end_pymotw_header
 
-import socket
+from network_programming import socket
 from urlparse import urlparse
 
 for url in [ 'http://www.python.org',

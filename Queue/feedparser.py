@@ -31,7 +31,15 @@ USER_AGENT = "UniversalFeedParser/%s%s +http://diveintomark.org/projects/feed_pa
 TIDY_MARKUP = 0
 
 # ---------- required modules (should come with any Python distribution) ----------
-import sgmllib, re, sys, copy, urlparse, time, rfc822, types
+import copy
+import re
+import rfc822
+import sgmllib
+import sys
+import time
+import types
+import urlparse
+
 try:
     from cStringIO import StringIO as _StringIO
 except:
@@ -53,7 +61,8 @@ try:
     import timeoutsocket # http://www.timo-tasi.org/python/timeoutsocket.py
     timeoutsocket.setDefaultSocketTimeout(10)
 except ImportError:
-    import socket
+    from network_programming import socket
+
     if hasattr(socket, 'setdefaulttimeout'):
         socket.setdefaulttimeout(10)
 import urllib2

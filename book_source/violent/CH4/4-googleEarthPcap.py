@@ -1,9 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import dpkt
-import socket
 import pygeoip
+
 import optparse
+from network_programming import socket
+
 gi = pygeoip.GeoIP('/opt/GeoIP/Geo.dat')
 
 

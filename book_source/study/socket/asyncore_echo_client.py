@@ -5,8 +5,8 @@
 __version__ = "$Id$"
 #end_pymotw_header
 
-import asyncore
 import logging
+import network_programming.asyncore
 
 
 class EchoClient(asyncore.dispatcher):
@@ -61,7 +61,7 @@ class EchoClient(asyncore.dispatcher):
         self.received_data.append(data)
 
 if __name__ == "__main__":
-    import socket
+    from network_programming import socket, asyncore
 
     message = open('lorem.txt', 'r').read()
     logging.info('Total message length: %d bytes', len(message))

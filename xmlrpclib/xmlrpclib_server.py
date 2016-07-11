@@ -7,9 +7,9 @@
 """
 #end_pymotw_header
 
-from SimpleXMLRPCServer import SimpleXMLRPCServer
-from xmlrpclib import Binary
 import datetime
+from network_programming.SimpleXMLRPCServer import SimpleXMLRPCServer
+from xmlrpclib import Binary
 
 server = SimpleXMLRPCServer(('localhost', 9000),
                             logRequests=True,

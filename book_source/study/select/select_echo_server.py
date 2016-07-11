@@ -7,10 +7,10 @@
 """
 #end_pymotw_header
 
-import select
-import socket
-import sys
 import Queue
+import select
+import sys
+from network_programming import socket
 
 # Create a TCP/IP socket
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

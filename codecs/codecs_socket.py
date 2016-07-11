@@ -7,8 +7,8 @@
 """
 #end_pymotw_header
 
+import network_programming.SocketServer
 import sys
-import SocketServer
 
 
 class Echo(SocketServer.BaseRequestHandler):
@@ -45,7 +45,7 @@ class PassThrough(object):
 
 if __name__ == '__main__':
     import codecs
-    import socket
+    from network_programming import socket, SocketServer
     import threading
 
     address = ('localhost', 0) # let the kernel assign a port

@@ -1,10 +1,11 @@
 #!usr/bin/python
 # coding: utf-8
+import collections
+import os
 import re
 import sys
-import os
-import collections
-import ConfigParser
+from network_programming import ConfigParser
+
 
 def split_word_file(filename):
     filedict = {}
