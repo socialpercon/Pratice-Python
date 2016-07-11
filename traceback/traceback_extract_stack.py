@@ -20,3 +20,6 @@ stack = call_function(f)
 for filename, linenum, funcname, source in stack:
     print '%-26s:%s "%s" in %s()' % \
         (os.path.basename(filename), linenum, source, funcname)
+prev_stack = traceback.extract_stack(limit=2)
+print prev_stack
+prev_stack = prev_stack[0]
